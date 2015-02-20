@@ -1,7 +1,6 @@
 package com.glassify.adserver.dao;
 
 import java.util.List;
-
 import com.glassify.adserver.domain.Ad;
 
 public interface AdDao {

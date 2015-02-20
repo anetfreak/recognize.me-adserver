@@ -21,7 +21,6 @@ public class AdDaoImpl implements AdDao {
 		this.dataSource = dataSource;
 	}
 
-	@Override
 	public void saveAd(Ad ad) {
 		String query = "insert into Ad (id, name, role) values (?,?,?)";
 
@@ -36,7 +35,6 @@ public class AdDaoImpl implements AdDao {
 		}else System.out.println("Ad save failed with id="+ad.getId());
 	}
 
-	@Override
 	public Ad getAdById(int id) {
 		String query = "select id, name, role from Ad where id = ?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -44,9 +42,7 @@ public class AdDaoImpl implements AdDao {
 		//using RowMapper anonymous class, we can create a separate RowMapper for reuse
 		Ad ad = jdbcTemplate.queryForObject(query, new Object[]{id}, new RowMapper<Ad>(){
 
-			@Override
-			public Ad mapRow(ResultSet rs, int rowNum)
-					throws SQLException {
+			public Ad mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Ad ad = new Ad();
 				ad.setId(rs.getInt("id"));
 				ad.setName(rs.getString("name"));
@@ -57,7 +53,6 @@ public class AdDaoImpl implements AdDao {
 		return ad;
 	}
 
-	@Override
 	public void updateAd(Ad ad) {
 		String query = "update Ad set name=?, role=? where id=?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -69,7 +64,6 @@ public class AdDaoImpl implements AdDao {
 		}else System.out.println("No Ad found with id="+ad.getId());
 	}
 
-	@Override
 	public void deleteAdById(int id) {
 
 		String query = "delete from Ad where id=?";
@@ -81,7 +75,6 @@ public class AdDaoImpl implements AdDao {
 		}else System.out.println("No Ad found with id="+id);
 	}
 
-	@Override
 	public List<Ad> getAllAds() {
 		String query = "select id, name, role from Ad";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
