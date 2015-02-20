@@ -1,4 +1,4 @@
-package com.glassify.controller;
+package com.glassify.adserver.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
