@@ -5,8 +5,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class AdController {
 
-	@RequestMapping("/showAds")
+	@RequestMapping("/getAds")
 	public ModelAndView showAllAds() {
-		return new ModelAndView("show-ads");
+		return new ModelAndView("ads");
 	}
 }

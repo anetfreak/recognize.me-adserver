@@ -1,19 +1,20 @@
 package com.glassify.adserver.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Ad {
 
 	private int id;
 	private String name;
-	private String type;
 	private String url;
-	private String company;
-	private String location;
+	private AdContentType contentType;
+	private AdBrand brand;
+	private String region;
 	private String language;
-	private String content;
-	private Date createdDate;
-	private Date expiryDate;
+	private Object content;
+	private Timestamp createdDate;
+	private Timestamp expiryDate;
+	private AdCategory category;
 	
 	public int getId() {
 		return id;
@@ -27,29 +28,29 @@ public class Ad {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
 	public String getUrl() {
 		return url;
 	}
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getCompany() {
-		return company;
+	public AdContentType getContentType() {
+		return contentType;
 	}
-	public void setCompany(String company) {
-		this.company = company;
+	public void setContentType(AdContentType contentType) {
+		this.contentType = contentType;
 	}
-	public String getLocation() {
-		return location;
+	public AdBrand getBrand() {
+		return brand;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setBrand(AdBrand brand) {
+		this.brand = brand;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	public String getLanguage() {
 		return language;
@@ -57,23 +58,28 @@ public class Ad {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public String getContent() {
+	public Object getContent() {
 		return content;
 	}
-	public void setContent(String content) {
+	public void setContent(Object content) {
 		this.content = content;
 	}
-	public Date getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
-	public Date getExpiryDate() {
+	public Timestamp getExpiryDate() {
 		return expiryDate;
 	}
-	public void setExpiryDate(Date expiryDate) {
+	public void setExpiryDate(Timestamp expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	
+	public AdCategory getCategory() {
+		return category;
+	}
+	public void setCategory(AdCategory category) {
+		this.category = category;
+	}
 }
