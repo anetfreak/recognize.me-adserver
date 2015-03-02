@@ -12,7 +12,7 @@
 		<div>
 			<span><a href="#">Create an Ad</a></span>
 			<span><a href="#">Update existing Ad</a></span>
-			<span><a href="#">Get all Ads</a></span>
+			<span><a href="./getAds">Get all Ads</a></span>
 			<span><a href="#">Remove an Ad</a></span>
 		</div>
 	</center>

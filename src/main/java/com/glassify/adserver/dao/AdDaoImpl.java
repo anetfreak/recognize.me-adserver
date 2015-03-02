@@ -9,24 +9,24 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import com.glassify.adserver.domain.Ad;
 import com.glassify.adserver.domain.AdBrand;
 import com.glassify.adserver.domain.AdCategory;
 import com.glassify.adserver.domain.AdContentType;
 
+@Component
 public class AdDaoImpl implements AdDao {
 
+	@Autowired
 	private DataSource dataSource;
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
 	public void saveAd(Ad ad) {
-		String query = "insert into Ad (id, name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "insert into advertisement (id, name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id) values (?,?,?,?,?,?,?,?,?,?,?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -43,7 +43,7 @@ public class AdDaoImpl implements AdDao {
 	}
 
 	public Ad getAdById(final int id) {
-		String query = "select name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id from Ad where id = ?";
+		String query = "select name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id from advertisement where id = ?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
 		Ad ad = jdbcTemplate.queryForObject(query, new Object[]{id}, new RowMapper<Ad>(){
@@ -76,7 +76,7 @@ public class AdDaoImpl implements AdDao {
 	}
 
 	public void updateAd(Ad ad) {
-		String query = "update Ad set name=?, url=?, ad_content_type=?, ad_brand_id=?, region=?, language=?, ad_content=?, created_date=?, expiry_date=?, ad_category_id=? where id=?";
+		String query = "update advertisement set name=?, url=?, ad_content_type=?, ad_brand_id=?, region=?, language=?, ad_content=?, created_date=?, expiry_date=?, ad_category_id=? where id=?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		Object[] args = new Object[] {ad.getName(), ad.getUrl(), ad.getContentType().getId(), ad.getBrand().getId(), ad.getRegion(), 
 				ad.getLanguage(), ad.getContent(), ad.getCreatedDate(), ad.getExpiryDate(), ad.getCategory().getId()};
@@ -91,7 +91,7 @@ public class AdDaoImpl implements AdDao {
 
 	public void deleteAdById(int id) {
 
-		String query = "delete from Ad where id=?";
+		String query = "delete from advertisement where id=?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
 		int out = jdbcTemplate.update(query, id);
@@ -103,7 +103,7 @@ public class AdDaoImpl implements AdDao {
 	}
 
 	public List<Ad> getAllAds() {
-		String query = "select id, name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id from Ad";
+		String query = "select id, name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id from advertisement";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Ad> adList = new ArrayList<Ad>();
 

@@ -2,13 +2,18 @@ package com.glassify.adserver.facade;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.glassify.adserver.dao.AdDao;
 import com.glassify.adserver.domain.Ad;
 
+@Component
 public class AdFacadeImpl implements AdFacade {
 	
+	@Autowired
 	private AdDao adDao;
-
+	
 	public void saveAd(Ad ad) {
 		adDao.saveAd(ad);
 	}
@@ -29,8 +34,4 @@ public class AdFacadeImpl implements AdFacade {
 		return adDao.getAllAds();
 	}
 	
-	public void setAdDao(AdDao adDao) {
-		this.adDao = adDao;
-	}
-
 }
