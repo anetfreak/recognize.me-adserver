@@ -18,6 +18,7 @@
 			<div><span><a href="#">Update existing Ad</a></span></div><br/>
 			<div><span><a href="./getAds">Get all Ads</a></span></div><br/>
 			<div><span><a href="#">Remove an Ad</a></span></div><br/>
+			<div><span><a href="./retrieveAd">Retrieve Ad</a></span></div><br/>
 		</div>
 	</center>
 	</body>
