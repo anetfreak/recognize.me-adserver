@@ -34,8 +34,7 @@ public class AdFacadeImpl implements AdFacade {
 		return adDao.getAllAds();
 	}
 
-	public Ad retrieveAd(String brandName, long latitude, long longitude,
-			String category) {
+	public Ad retrieveAd(String brandName, long latitude, long longitude, String category) {
 		return adDao.retrieveAd(brandName, latitude, longitude, category);
 	}
 
