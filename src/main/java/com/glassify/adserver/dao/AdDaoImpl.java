@@ -135,4 +135,9 @@ public class AdDaoImpl implements AdDao {
 		return adList;
 	}
 
+	public Ad retrieveAd(String brandName, long latitude, long longitude, String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

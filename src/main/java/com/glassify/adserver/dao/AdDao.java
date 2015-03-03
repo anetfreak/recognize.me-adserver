@@ -1,6 +1,7 @@
 package com.glassify.adserver.dao;
 
 import java.util.List;
+
 import com.glassify.adserver.domain.Ad;
 
 public interface AdDao {
@@ -15,4 +16,5 @@ public interface AdDao {
     public void deleteAdById(int id);
     //Get All
     public List<Ad> getAllAds();
+	public Ad retrieveAd(String brandName, long latitude, long longitude, String category);
 }
