@@ -5,19 +5,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Recognize.Me Ad-Server!</title>
 		
+		<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
-		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<center>
 		<h2>Welcome to Recognize.me Ad Server</h2>
-		<p>Choose one of the following actions to proceed..</p>
 		<div>
-			<div><span><a href="#">Create an Ad</a></span></div><br/>
+			<div><span><a href="./createAd">Create an Ad</a></span></div><br/>
 			<div><span><a href="#">Update existing Ad</a></span></div><br/>
 			<div><span><a href="./getAds">Get all Ads</a></span></div><br/>
-			<div><span><a href="#">Remove an Ad</a></span></div><br/>
+			<div><span><a href="#" >Remove an Ad</a></span></div><br/>
 			<div><span><a href="./retrieveAd">Retrieve Ad</a></span></div><br/>
 		</div>
 	</center>
