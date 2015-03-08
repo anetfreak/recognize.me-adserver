@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.glassify.adserver.domain.Ad;
 import com.glassify.adserver.domain.AdBrand;
@@ -24,8 +25,11 @@ public class AdController {
 	private AdFacade adFacade;
 	
 	@RequestMapping("/getAds")
-	public @ResponseBody List<Ad> getAllAds() {
-		return adFacade.getAllAds();
+	public ModelAndView getAllAds() {
+		List<Ad> ads = adFacade.getAllAds();
+		ModelAndView modelAndView = new ModelAndView("show-ads");
+		modelAndView.addObject(ads);
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/getAdbyId/{adId}", method = RequestMethod.GET)
