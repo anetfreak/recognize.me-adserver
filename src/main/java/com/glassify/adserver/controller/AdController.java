@@ -28,7 +28,7 @@ public class AdController {
 	public ModelAndView getAllAds() {
 		List<Ad> ads = adFacade.getAllAds();
 		ModelAndView modelAndView = new ModelAndView("show-ads");
-		modelAndView.addObject(ads);
+		modelAndView.addObject("ads", ads);
 		return modelAndView;
 	}
 	

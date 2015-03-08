@@ -22,7 +22,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/">Recognize.Me Ads</a>
+					<a class="navbar-brand" href="/adserver">Recognize.Me Ads</a>
 				</div>
 	
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,12 +43,12 @@
 	    <div class="container">
 	    	<div class="row">
 	            <h2>Welcome to Recognize.me Ad Server</h2>
-				<div>
-					<div><span><a href="./createAd">Create an Ad</a></span></div><br/>
-					<div><span><a href="#">Update existing Ad</a></span></div><br/>
-					<div><span><a href="./getAds">Get all Ads</a></span></div><br/>
-					<div><span><a href="#" >Remove an Ad</a></span></div><br/>
-					<div><span><a href="./retrieveAd">Retrieve Ad</a></span></div><br/>
+				<div style="margin-top: 30px;">
+					<div><span><a href="./createAd" class="btn btn-success">Create an Ad</a></span></div><br/>
+					<div><span><a href="#" class="btn btn-primary">Update existing Ad</a></span></div><br/>
+					<div><span><a href="./getAds" class="btn btn-primary">Get all Ads</a></span></div><br/>
+					<div><span><a href="#" class="btn btn-danger">Remove an Ad</a></span></div><br/>
+					<div><span><a href="./retrieveAd" class="btn btn-primary">Retrieve Ad</a></span></div><br/>
 				</div>
 	    </div>
 	    </div>
