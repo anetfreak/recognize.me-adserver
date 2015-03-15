@@ -7,13 +7,14 @@
 		<title>Recognize.Me Ad-Server!</title>
 		
 		<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="resources/js/ads.js"></script>
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="resources/css/home.css">
 	</head>
 	<body>
-	    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	    <nav class="navbar transparent navbar-deafult navbar-fixed-top" role="navigation">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -45,7 +46,7 @@
 	    	<div class="row">
 	        	<h4>Advertisement</h4>
 	        	<div>
-	        		<table class="table table-striped">
+	        		<table id="ads-table" class="table table-striped">
 	        			<thead>
 	        				<tr>
 	        					<th>Name</th>
@@ -56,13 +57,13 @@
 	        				</tr>
 	        			</thead>
 	        			<tbody>
-	        				<c:forEach items="${ads}" var="ad">
+	        				<c:forEach var="ad" items="${ads}">
 		        				<tr>
-		        					<td>${ad.name}</td>
-		        					<td>${ad.url}</td>
-		        					<td>${ad.region}</td>
-		        					<td>${ad.category}</td>
-		        					<td>${ad.contentType}</td>
+		        					<td><c:out value="${ad.name}"></c:out></td>
+		        					<td><c:out value="${ad.url}"></c:out></td>
+		        					<td><c:out value="${ad.region}"></c:out></td>
+		        					<td><c:out value="${ad.category.name}"></c:out></td>
+		        					<td><c:out value="${ad.contentType.contentType}"></c:out></td>
 		        				</tr>
 	        				</c:forEach>
 	        			</tbody>

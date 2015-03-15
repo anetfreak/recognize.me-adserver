@@ -32,6 +32,11 @@ public class AdController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/createAd")
+	public ModelAndView showCreateAdPage() {
+		return new ModelAndView("create-ad");
+	}
+	
 	@RequestMapping(value = "/getAdbyId/{adId}", method = RequestMethod.GET)
 	public @ResponseBody Ad getAdbyId(@PathVariable int adId) {
 		return adFacade.getAdById(adId);

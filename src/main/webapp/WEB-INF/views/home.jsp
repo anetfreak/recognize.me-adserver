@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="resources/css/home.css">
 	</head>
 	<body>
-	    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	    <nav class="navbar transparent navbar-deafult navbar-fixed-top" role="navigation">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -48,7 +48,7 @@
 					<div><span><a href="#" class="btn btn-primary">Update existing Ad</a></span></div><br/>
 					<div><span><a href="./getAds" class="btn btn-primary">Get all Ads</a></span></div><br/>
 					<div><span><a href="#" class="btn btn-danger">Remove an Ad</a></span></div><br/>
-					<div><span><a href="./retrieveAd" class="btn btn-primary">Retrieve Ad</a></span></div><br/>
+<!-- 					<div><span><a href="./retrieveAd" class="btn btn-primary">Retrieve Ad</a></span></div><br/> -->
 				</div>
 	    </div>
 	    </div>

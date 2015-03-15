@@ -15,6 +15,7 @@ body {
 	}
 }
 
-.navbar-header {
+.navbar-brand {
 	cursor: pointer;
 }
+
