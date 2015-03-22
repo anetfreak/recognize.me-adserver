@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="resources/css/home.css">
 	</head>
 	<body>
-	    <nav class="navbar transparent navbar-deafult navbar-fixed-top" role="navigation">
+	    <nav class="navbar transparent navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -24,12 +24,19 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/adserver">Recognize.Me Ads</a>
+					<a class="navbar-brand" href="/adserver">Recognize.Me Ad-Engine</a>
 				</div>
 	
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ad Menu<b class="caret"></b></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./createAd">Create</a></li>
+							    <li><a href="./getAds">Get All Ads</a></li>
+							</ul>
+						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, Admin <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -39,7 +46,7 @@
 						</li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
+			</div><!-- /.container -->
 		</nav>
 	    
 	    <div class="container">

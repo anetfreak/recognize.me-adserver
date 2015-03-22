@@ -15,15 +15,13 @@
 <script>
 	function initialize() {
 		var mapOptions = {
-			center : new google.maps.LatLng(-33.8688, 151.2195),
+			center : new google.maps.LatLng(37.7749, -122.4194200),
 			zoom : 13,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-		var input = /** @type {HTMLInputElement} */
-		(document.getElementById('searchTextField'));
+		var input = document.getElementById('searchTextField');
 		var autocomplete = new google.maps.places.Autocomplete(input);
 
 		autocomplete.bindTo('bounds', map);
@@ -104,47 +102,51 @@
 <link rel="stylesheet" href="resources/css/home.css">
 </head>
 <body>
-	<nav class="navbar transparent navbar-deafult navbar-fixed-top"
-		role="navigation">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/adserver">Recognize.Me Ads</a>
-		</div>
+	<nav class="navbar transparent navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/adserver">Recognize.Me Ad-Engine</a>
+			</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">Hello, Admin <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid --> </nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ad Menu<b class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="./createAd">Create</a></li>
+						    <li><a href="./getAds">Get All Ads</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, Admin <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Profile</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h4>Post a new advertisement</h4>
+				<h4>Create advertisement</h4>
 				<form class="form-horizontal" style="margin-top: 30px;"
 					id="createAdForm">
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name"
-								placeholder="Ad Name">
+							<input type="text" class="form-control" id="name" placeholder="Ad Name">
 						</div>
 					</div>
 					<div class="form-group">
@@ -166,21 +168,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="region" class="col-sm-2 control-label">Location</label>
-						<div class="col-sm-5">
-							<div id="panel">
-								<input id="searchTextField" type="text" size="50"> <input
-									type="radio" name="type" id="changetype-all" checked="checked">
-								<label for="changetype-all">All</label> <input type="radio"
-									name="type" id="changetype-establishment"> <label
-									for="changetype-establishment">Establishments</label> <input
-									type="radio" name="type" id="changetype-geocode"> <label
-									for="changetype-geocode">Geocodes</label>
-							</div>
-							<div id="map-canvas"></div>
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="category" class="col-sm-2 control-label">Category</label>
 						<div class="col-sm-5">
 							<select class="form-control" id="category">
@@ -193,10 +180,9 @@
 					</div>
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">Content</label>
-						<div class="col-sm-10">
-							<input type="file" id="content">
-							<p class="help-block">Choose the file to be used as
-								advertisement here..</p>
+						<div class="col-sm-5">
+							<input type="file" id="content" class="form-control">
+							<p class="help-block">Choose the file to be used as advertisement here..</p>
 						</div>
 					</div>
 					<div class="form-group">
@@ -211,6 +197,34 @@
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="region" class="col-sm-2 control-label">Location</label>
+						<div class="col-sm-3">
+							<div class="radio" id="panel">
+								<input id="searchTextField" type="text" size="50" class="form-control">
+							  	<label>
+							    	<input type="radio" name="type" id="changetype-all" value="all" checked>
+							    	All
+							  	</label>
+							</div>
+							<div class="radio">
+							  	<label>
+							    	<input type="radio" name="type" id="changetype-establishment" value="establishments">
+							    	Establishments
+							  	</label>
+							</div>
+							<div class="radio disabled">
+							  	<label>
+							    	<input type="radio" name="type" id="changetype-geocode" value="geocodes">
+							    	Geocodes
+							  	</label>
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div id="map-canvas"></div>
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-primary">Create</button>
