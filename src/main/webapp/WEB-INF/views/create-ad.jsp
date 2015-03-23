@@ -142,23 +142,23 @@
 			<div class="col-md-8">
 				<h4>Create advertisement</h4>
 				<form class="form-horizontal" style="margin-top: 30px;"
-					id="createAdForm">
+					id="createAdForm" method="POST">
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" placeholder="Ad Name">
+							<input type="text" name="name" class="form-control" id="name" placeholder="Ad Name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="url" class="col-sm-2 control-label">URL</label>
 						<div class="col-sm-10">
-							<input type="url" class="form-control" id="url" placeholder="URL">
+							<input type="url" name="url" class="form-control" id="url" placeholder="URL">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="region" class="col-sm-2 control-label">Region</label>
 						<div class="col-sm-5">
-							<select class="form-control" id="region">
+							<select class="form-control" id="region" name="region">
 								<option>EN-US</option>
 								<option>EN-UK</option>
 								<option>French</option>
@@ -170,7 +170,7 @@
 					<div class="form-group">
 						<label for="category" class="col-sm-2 control-label">Category</label>
 						<div class="col-sm-5">
-							<select class="form-control" id="category">
+							<select class="form-control" id="category" name="category">
 								<option>Promotion</option>
 								<option>New Launch</option>
 								<option>Regular</option>
@@ -181,7 +181,7 @@
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">Content</label>
 						<div class="col-sm-5">
-							<input type="file" id="content" class="form-control">
+							<input type="file" id="content" class="form-control" name="content">
 							<p class="help-block">Choose the file to be used as advertisement here..</p>
 						</div>
 					</div>
@@ -189,7 +189,7 @@
 						<label for="type" class="col-sm-2 control-label">Content
 							Type</label>
 						<div class="col-sm-5">
-							<select class="form-control" id="type">
+							<select class="form-control" id="type" name="type">
 								<option>Video</option>
 								<option>Audio</option>
 								<option>Text</option>

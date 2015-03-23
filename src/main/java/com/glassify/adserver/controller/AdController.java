@@ -34,6 +34,7 @@ public class AdController {
 	
 	@RequestMapping("/createAd")
 	public ModelAndView showCreateAdPage() {
+		System.out.println("In GET - create ad");
 		return new ModelAndView("create-ad");
 	}
 	
@@ -52,17 +53,20 @@ public class AdController {
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.POST)
 	@ResponseBody
-	public void createAd(@RequestParam String brandName,
-			@RequestParam String name,
-			@RequestParam String url,
-			@RequestParam String contentType,
-			@RequestParam String language,
+	public void createAd(
+			//@RequestParam String brandName,
+			@RequestParam("name") String name,
+			@RequestParam("url") String url,
+			@RequestParam("type") String contentType,
+			@RequestParam("region") String region,
 //			@RequestParam Object content,
-			@RequestParam String category) {
+			@RequestParam("category") String category) {
 		
+		
+		System.out.println("In POST - create ad");
 		Ad ad = new Ad();
 		AdBrand brand = new AdBrand();
-		brand.setName(brandName);
+		//brand.setName(brandName);
 		brand.setId(1);
 		ad.setBrand(brand);
 		
@@ -78,9 +82,9 @@ public class AdController {
 		
 		ad.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 		ad.setExpiryDate(new Timestamp(System.currentTimeMillis()));
-		ad.setLanguage(language);
+		ad.setRegion(region);
+		ad.setLanguage(region);
 		ad.setName(name);
-		ad.setRegion("EN-US");
 		ad.setUrl(url);
 		ad.setContent("Hello to your first advertisement");
 		

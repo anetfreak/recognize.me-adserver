@@ -1,6 +1,9 @@
 package com.glassify.adserver.domain;
 
 import java.sql.Timestamp;
+import com.glassify.adserver.domain.AdBrand;
+import com.glassify.adserver.domain.AdCategory;
+import com.glassify.adserver.domain.AdContentType;
 
 public class Ad {
 
