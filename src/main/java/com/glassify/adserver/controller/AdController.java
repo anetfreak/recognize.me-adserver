@@ -34,12 +34,11 @@ public class AdController {
 	
 	@RequestMapping("/createAd")
 	public ModelAndView showCreateAdPage() {
-		System.out.println("In createad controller get");
 		return new ModelAndView("create-ad");
 	}
 	
 	@RequestMapping(value = "/getAdbyId/{adId}", method = RequestMethod.GET)
-	public @ResponseBody Ad getAdbyId(@PathVariable int adId){
+	public @ResponseBody Ad getAdbyId(@PathVariable int adId) {
 		return adFacade.getAdById(adId);
 	}
 	
@@ -53,18 +52,17 @@ public class AdController {
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.POST)
 	@ResponseBody
-	public void createAd(@RequestParam String name,
+	public void createAd(@RequestParam String brandName,
+			@RequestParam String name,
 			@RequestParam String url,
 			@RequestParam String contentType,
 			@RequestParam String language,
-			@RequestParam String content,
-			@RequestParam String category){
+//			@RequestParam Object content,
+			@RequestParam String category) {
 		
-		try{
-			System.out.println("In ad controller");
 		Ad ad = new Ad();
 		AdBrand brand = new AdBrand();
-		brand.setName("Check");
+		brand.setName(brandName);
 		brand.setId(1);
 		ad.setBrand(brand);
 		
@@ -86,12 +84,8 @@ public class AdController {
 		ad.setUrl(url);
 		ad.setContent("Hello to your first advertisement");
 		
-		System.out.println("Will save to facade");
 		adFacade.saveAd(ad);
-		}
-		catch(Exception e){
-			System.out.println("Exception encountered: "+e);
-		}
+		
 	}
 	
 }

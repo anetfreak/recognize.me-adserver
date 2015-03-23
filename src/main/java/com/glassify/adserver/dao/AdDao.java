@@ -1,6 +1,5 @@
 package com.glassify.adserver.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.glassify.adserver.domain.Ad;
@@ -8,7 +7,7 @@ import com.glassify.adserver.domain.Ad;
 public interface AdDao {
 
 	//Create
-    public void saveAd(Ad ad) throws SQLException, Exception;
+    public void saveAd(Ad ad);
     //Read
     public Ad getAdById(int id);
     //Update

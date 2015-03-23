@@ -11,7 +11,7 @@ public class Ad {
 	private AdBrand brand;
 	private String region;
 	private String language;
-	private String content;
+	private Object content;
 	private Timestamp createdDate;
 	private Timestamp expiryDate;
 	private AdCategory category;
@@ -58,10 +58,10 @@ public class Ad {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public String getContent() {
+	public Object getContent() {
 		return content;
 	}
-	public void setContent(String content) {
+	public void setContent(Object content) {
 		this.content = content;
 	}
 	public Timestamp getCreatedDate() {
