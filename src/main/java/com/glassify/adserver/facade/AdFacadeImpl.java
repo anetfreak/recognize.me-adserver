@@ -14,7 +14,8 @@ public class AdFacadeImpl implements AdFacade {
 	@Autowired
 	private AdDao adDao;
 	
-	public void saveAd(Ad ad) {
+	public void saveAd(Ad ad) throws Exception {
+		System.out.println("In facade");
 		adDao.saveAd(ad);
 	}
 
