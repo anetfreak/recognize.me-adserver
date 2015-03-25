@@ -2,10 +2,48 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
  
+ 	<!-- Configure JDBC connection -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/recognizeme_advertising" />
         <property name="username" value="root" />
         <property name="password" value="root" />
     </bean>
+    
+    <!-- Configure Hibernate session 4 library -->
+    <bean id="sessionFactory"
+            class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+            <property name="dataSource">
+                  <ref bean="dataSource" />
+            </property>
+
+            <property name="hibernateProperties">
+                  <props>
+                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                        <prop key="hibernate.show_sql">true</prop>
+                  </props>
+            </property>
+      </bean>
+      
+ <!-- Configure Hibernate 4 Session Facotry -->
+      <bean id="sessionFactory"
+            class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+            <property name="dataSource">
+                  <ref bean="dataSource" />
+            </property>
+
+            <property name="hibernateProperties">
+                  <props>
+                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                        <prop key="hibernate.show_sql">true</prop>
+                  </props>
+            </property>
+    </bean>
+    
+    <bean id="Ad" class="com.glassify.adserver.domain">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+    </bean>
+
 </beans>

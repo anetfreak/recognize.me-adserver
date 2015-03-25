@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import com.glassify.adserver.dao.AdDao;
 import com.glassify.adserver.domain.Ad;
+import com.glassify.adserver.domain.AdBrand;
+import com.glassify.adserver.domain.AdCategory;
+import com.glassify.adserver.domain.AdContentType;
 
 @Component
 public class AdFacadeImpl implements AdFacade {
@@ -14,7 +17,7 @@ public class AdFacadeImpl implements AdFacade {
 	@Autowired
 	private AdDao adDao;
 	
-	public void saveAd(Ad ad) {
+	public void saveAd(Ad ad) throws Exception {
 		adDao.saveAd(ad);
 	}
 
@@ -36,6 +39,18 @@ public class AdFacadeImpl implements AdFacade {
 
 	public Ad retrieveAd(String brandName, long latitude, long longitude, String category) {
 		return adDao.retrieveAd(brandName, latitude, longitude, category);
+	}
+	
+	public List<AdBrand> getAllBrands(){
+		return adDao.getAllBrands();
+	}
+	
+	public List<AdCategory> getAllAdCategories(){
+		return adDao.getAllAdCategories();
+	}
+	
+	public List<AdContentType> getallContentTypes(){
+		return adDao.getallContentTypes();
 	}
 
 }

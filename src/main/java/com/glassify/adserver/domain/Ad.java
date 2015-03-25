@@ -1,13 +1,27 @@
 package com.glassify.adserver.domain;
 
 import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.glassify.adserver.domain.AdBrand;
 import com.glassify.adserver.domain.AdCategory;
 import com.glassify.adserver.domain.AdContentType;
 
+@Entity
+@Table(name="advertisement")
 public class Ad {
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String name;
 	private String url;
 	private AdContentType contentType;

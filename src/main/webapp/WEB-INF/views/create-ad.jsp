@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -144,15 +145,25 @@
 				<form class="form-horizontal" style="margin-top: 30px;"
 					id="createAdForm" method="POST">
 					<div class="form-group">
+						<label for="brandname" class="col-sm-2 control-label">Brand</label>
+						<div class="col-sm-5">
+							<select class="form-control" id="brandid" name="brandid">
+								<c:forEach var="brand" items="${brands}">
+        							<option value="${brand.id}">${brand.name}</option>
+    							</c:forEach>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" name="name" class="form-control" id="name" placeholder="Ad Name">
+							<input type="text" name="name" class="form-control" id="name" placeholder="Enter the advertisement name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="url" class="col-sm-2 control-label">URL</label>
 						<div class="col-sm-10">
-							<input type="url" name="url" class="form-control" id="url" placeholder="URL">
+							<input type="url" name="url" class="form-control" id="url" placeholder="Enter a URL">
 						</div>
 					</div>
 					<div class="form-group">
@@ -170,11 +181,10 @@
 					<div class="form-group">
 						<label for="category" class="col-sm-2 control-label">Category</label>
 						<div class="col-sm-5">
-							<select class="form-control" id="category" name="category">
-								<option>Promotion</option>
-								<option>New Launch</option>
-								<option>Regular</option>
-								<option>Special Campaign</option>
+							<select class="form-control" id="categoryid" name="categoryid">
+								<c:forEach var="category" items="${categories}">
+        							<option value="${category.id}">${category.name}</option>
+    							</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -189,18 +199,17 @@
 						<label for="type" class="col-sm-2 control-label">Content
 							Type</label>
 						<div class="col-sm-5">
-							<select class="form-control" id="type" name="type">
-								<option>Video</option>
-								<option>Audio</option>
-								<option>Text</option>
-								<option>Email</option>
+							<select class="form-control" id="contenttypeid" name="contenttypeid">
+								<c:forEach var="contenttype" items="${contenttypes}">
+        							<option value="${contenttype.id}">${contenttype.contentType}</option>
+    							</c:forEach>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="region" class="col-sm-2 control-label">Location</label>
-						<div class="col-sm-3">
-							<div class="radio" id="panel">
+						<div class="col-sm-10">
+							<div class="radio" id="panel" >
 								<input id="searchTextField" type="text" size="50" class="form-control">
 							  	<label>
 							    	<input type="radio" name="type" id="changetype-all" value="all" checked>
@@ -220,14 +229,14 @@
 							  	</label>
 							</div>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-offset-2 col-sm-10">
 							<div id="map-canvas"></div>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-primary">Create</button>
+							<button type="submit" class="btn btn-primary">Create Advertisement</button>
 						</div>
 					</div>
 				</form>

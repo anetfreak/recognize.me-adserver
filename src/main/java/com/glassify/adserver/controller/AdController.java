@@ -1,5 +1,8 @@
 package com.glassify.adserver.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -35,7 +38,14 @@ public class AdController {
 	@RequestMapping("/createAd")
 	public ModelAndView showCreateAdPage() {
 		System.out.println("In GET - create ad");
-		return new ModelAndView("create-ad");
+		List<AdBrand> adbrands = adFacade.getAllBrands();
+		List<AdCategory> adcategories = adFacade.getAllAdCategories();
+		List<AdContentType> contenttype = adFacade.getallContentTypes();
+		ModelAndView modelView = new ModelAndView("create-ad");
+		modelView.addObject("brands", adbrands);
+		modelView.addObject("categories", adcategories);
+		modelView.addObject("contenttypes", contenttype);
+		return modelView;
 	}
 	
 	@RequestMapping(value = "/getAdbyId/{adId}", method = RequestMethod.GET)
@@ -54,42 +64,54 @@ public class AdController {
 	@RequestMapping(value = "/createAd", method = RequestMethod.POST)
 	@ResponseBody
 	public void createAd(
-			//@RequestParam String brandName,
+			@RequestParam("brandid") Integer brandid,
 			@RequestParam("name") String name,
 			@RequestParam("url") String url,
-			@RequestParam("type") String contentType,
+			@RequestParam("contenttypeid") Integer contentType,
 			@RequestParam("region") String region,
-//			@RequestParam Object content,
-			@RequestParam("category") String category) {
-		
+			@RequestParam File content,
+			@RequestParam("categoryid") Integer category) {
 		
 		System.out.println("In POST - create ad");
 		Ad ad = new Ad();
+		
 		AdBrand brand = new AdBrand();
-		//brand.setName(brandName);
-		brand.setId(1);
+		brand.setId(brandid);
 		ad.setBrand(brand);
 		
 		AdCategory adCategory = new AdCategory();
-		adCategory.setName(category);
-		adCategory.setId(1);
+		adCategory.setId(category);
 		ad.setCategory(adCategory);
 		
 		AdContentType adContentType = new AdContentType();
-		adContentType.setContentType(contentType);
-		adContentType.setId(1);
+		adContentType.setId(contentType);
 		ad.setContentType(adContentType);
 		
+		ad.setContent(adContentType);
 		ad.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 		ad.setExpiryDate(new Timestamp(System.currentTimeMillis()));
 		ad.setRegion(region);
 		ad.setLanguage(region);
 		ad.setName(name);
 		ad.setUrl(url);
-		ad.setContent("Hello to your first advertisement");
-		
-		adFacade.saveAd(ad);
-		
+		//ad.setContent("Hello to your first advertisement");
+
+		try {
+			adFacade.saveAd(ad);
+		} catch (FileNotFoundException file) {
+			// TODO Auto-generated catch block
+			System.out.println("The file uploaded could not be found..!");
+			file.printStackTrace();
+		}
+		catch(SQLException sql){
+			System.out.println("Error encountered in connecting to database");
+			sql.printStackTrace();
+		}
+		catch(Exception e){
+			System.out.println("Exception encountered.!");
+			e.printStackTrace();
+		}
+
 	}
 	
 }
