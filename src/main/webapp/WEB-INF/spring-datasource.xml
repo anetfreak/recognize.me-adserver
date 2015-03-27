@@ -26,22 +26,6 @@
             </property>
       </bean>
       
- <!-- Configure Hibernate 4 Session Facotry -->
-      <bean id="sessionFactory"
-            class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-
-            <property name="dataSource">
-                  <ref bean="dataSource" />
-            </property>
-
-            <property name="hibernateProperties">
-                  <props>
-                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                        <prop key="hibernate.show_sql">true</prop>
-                  </props>
-            </property>
-    </bean>
-    
     <bean id="Ad" class="com.glassify.adserver.domain">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
     </bean>
