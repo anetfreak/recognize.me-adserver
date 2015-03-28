@@ -139,17 +139,9 @@ public class AdDaoImpl implements AdDao {
 			ad.setRegion(String.valueOf(adRow.get("region")));
 			ad.setLanguage(String.valueOf(adRow.get("language")));
 			ad.setUrl(String.valueOf(adRow.get("url")));
-
-			AdCategory category = new AdCategory();
-			category.setId(Integer.parseInt(String.valueOf(adRow
-					.get("ad_category_id"))));
-			AdBrand brand = new AdBrand();
-			brand.setId(Integer.parseInt(String.valueOf(adRow
-					.get("ad_brand_id"))));
-			AdContentType contentType = new AdContentType();
-			contentType.setId(Integer.parseInt(String.valueOf(adRow
-					.get("ad_content_type"))));
-
+			AdCategory category = getCategoryDetails(Integer.parseInt(String.valueOf(adRow.get("ad_category_id"))));
+			AdBrand brand = getBrandDetails(Integer.parseInt(String.valueOf(adRow.get("ad_brand_id"))));
+			AdContentType contentType = getContentDetails(Integer.parseInt(String.valueOf(adRow.get("ad_content_type"))));
 			ad.setBrand(brand);
 			ad.setCategory(category);
 			ad.setContentType(contentType);
@@ -249,5 +241,70 @@ public class AdDaoImpl implements AdDao {
 		} finally {
 			return contenttypelist;
 		}
+	}
+	
+	/**
+	 * Method to retrieve the category details according to category id
+	 */
+	public AdCategory getCategoryDetails(final Integer catId){
+		
+			String query = "select * from ad_category where id = ?";
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+			AdCategory adCat = jdbcTemplate.queryForObject(query, new Object[] { catId },
+					new RowMapper<AdCategory>() {
+						AdCategory adCat = new AdCategory();
+						public AdCategory mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							adCat.setId(catId);
+							adCat.setName(rs.getString("name"));
+							adCat.setDesc(rs.getString("desc"));
+							return adCat;
+						}
+					});
+			return adCat;
+	}
+	
+	/**
+	 * Method to retrieve the Brand details according to brand id
+	 */
+	public AdBrand getBrandDetails(final Integer brandId){
+		
+			String query = "select * from ad_brand where id = ?";
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+			AdBrand adBrand = jdbcTemplate.queryForObject(query, new Object[] { brandId },
+					new RowMapper<AdBrand>() {
+						AdBrand adBrand = new AdBrand();
+						public AdBrand mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							adBrand.setId(brandId);
+							adBrand.setName(rs.getString("name"));
+							adBrand.setWebsite(rs.getString("website"));
+							adBrand.setDomain(rs.getString("domain"));
+							adBrand.setDesc(rs.getString("desc"));
+							return adBrand;
+						}
+					});
+			return adBrand;
+	}
+	
+	/**
+	 * Method to retrieve the Content Type details according to content type id
+	 */
+	public AdContentType getContentDetails(final Integer contentId){
+		
+			String query = "select * from ad_content_type where id = ?";
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+			AdContentType adContent = jdbcTemplate.queryForObject(query, new Object[] { contentId },
+					new RowMapper<AdContentType>() {
+				AdContentType adContent = new AdContentType();
+						public AdContentType mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							adContent.setId(contentId);
+							adContent.setContentType(rs.getString("content_type_name"));
+							adContent.setDesc(rs.getString("desc"));
+							return adContent;
+						}
+					});
+			return adContent;
 	}
 }

@@ -157,13 +157,13 @@
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" name="name" class="form-control" id="name" placeholder="Enter the advertisement name">
+							<input type="text" name="name" class="form-control" id="name" required="true" placeholder="Enter the advertisement name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="url" class="col-sm-2 control-label">URL</label>
 						<div class="col-sm-10">
-							<input type="url" name="url" class="form-control" id="url" placeholder="Enter a URL">
+							<input type="url" name="url" class="form-control" id="url" required="true" placeholder="Enter a URL">
 						</div>
 					</div>
 					<div class="form-group">
@@ -210,7 +210,7 @@
 						<label for="region" class="col-sm-2 control-label">Location</label>
 						<div class="col-sm-10">
 							<div class="radio" id="panel" >
-								<input id="searchTextField" type="text" size="50" class="form-control">
+								<input id="searchTextField" type="text" size="50" class="form-control" required="true" >
 							  	<label>
 							    	<input type="radio" name="type" id="changetype-all" value="all" checked>
 							    	All

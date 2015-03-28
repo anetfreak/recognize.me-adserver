@@ -59,6 +59,7 @@
 	        				<tr>
 	        					<th>Name</th>
 	        					<th>URL</th>
+	        					<th>Brand</th>
 	        					<th>Region</th>
 	        					<th>Category</th>
 	        					<th>Content Type</th>
@@ -69,6 +70,7 @@
 		        				<tr>
 		        					<td><c:out value="${ad.name}"></c:out></td>
 		        					<td><c:out value="${ad.url}"></c:out></td>
+		        					<td><c:out value="${ad.brand.name}"></c:out></td>
 		        					<td><c:out value="${ad.region}"></c:out></td>
 		        					<td><c:out value="${ad.category.name}"></c:out></td>
 		        					<td><c:out value="${ad.contentType.contentType}"></c:out></td>

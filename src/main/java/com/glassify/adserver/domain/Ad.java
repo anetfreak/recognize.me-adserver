@@ -1,27 +1,13 @@
 package com.glassify.adserver.domain;
 
 import java.sql.Timestamp;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.glassify.adserver.domain.AdBrand;
 import com.glassify.adserver.domain.AdCategory;
 import com.glassify.adserver.domain.AdContentType;
 
-@Entity
-@Table(name="advertisement")
 public class Ad {
 
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	
+	private int id;	
 	private String name;
 	private String url;
 	private AdContentType contentType;
@@ -32,6 +18,7 @@ public class Ad {
 	private Timestamp createdDate;
 	private Timestamp expiryDate;
 	private AdCategory category;
+	private String coordinates;
 	
 	public int getId() {
 		return id;
@@ -98,5 +85,11 @@ public class Ad {
 	}
 	public void setCategory(AdCategory category) {
 		this.category = category;
+	}
+	public String getCoordinates() {
+		return coordinates;
+	}
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
 	}
 }

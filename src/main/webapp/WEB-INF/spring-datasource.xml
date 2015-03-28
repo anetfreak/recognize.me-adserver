@@ -9,25 +9,4 @@
         <property name="username" value="root" />
         <property name="password" value="root" />
     </bean>
-    
-    <!-- Configure Hibernate session 4 library -->
-    <bean id="sessionFactory"
-            class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-
-            <property name="dataSource">
-                  <ref bean="dataSource" />
-            </property>
-
-            <property name="hibernateProperties">
-                  <props>
-                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                        <prop key="hibernate.show_sql">true</prop>
-                  </props>
-            </property>
-      </bean>
-      
-    <bean id="Ad" class="com.glassify.adserver.domain">
-        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
-    </bean>
-
 </beans>
