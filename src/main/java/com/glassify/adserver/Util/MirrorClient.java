@@ -27,6 +27,7 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.mirror.Mirror;
 import com.google.api.services.mirror.model.Attachment;
+import com.google.api.services.mirror.model.NotificationConfig;
 import com.google.api.services.mirror.model.TimelineItem;
 import com.google.common.io.ByteStreams;
 
@@ -36,9 +37,29 @@ import com.google.common.io.ByteStreams;
  * @author Amit Agrawal
  */
 public class MirrorClient {
-  private static final Logger LOG = Logger.getLogger(MirrorClient.class.getSimpleName());
+  //private static final Logger LOG = Logger.getLogger(MirrorClient.class.getSimpleName());
 
-  public static Mirror getMirror(Credential credential) {
+  //Main for testing
+  public static void main(String[] args){
+	// Send welcome timeline item
+    TimelineItem timelineItem = new TimelineItem();
+    timelineItem.setText("Welcome to the Glass Java Quick Start");
+    timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+    Credential credential = null; //TODO call db for getting credential
+    TimelineItem insertedItem = null;
+	try {
+		MirrorClient mc = new MirrorClient();
+		insertedItem = mc.insertTimelineItem(credential, timelineItem);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    //LOG.info("Bootstrapper inserted welcome message " + insertedItem.getId() + " for user "
+      //  + "test");
+  }
+  
+  
+  public Mirror getMirror(Credential credential) {
     return new Mirror.Builder(new NetHttpTransport(), new JacksonFactory(), credential)
         .setApplicationName("Glass AdServer").build();
   }
@@ -49,7 +70,7 @@ public class MirrorClient {
    * @param credential the user's credential
    * @param item       the item to insert
    */
-  public static TimelineItem insertTimelineItem(Credential credential, TimelineItem item)
+  public TimelineItem insertTimelineItem(Credential credential, TimelineItem item)
       throws IOException {
     return getMirror(credential).timeline().insert(item).execute();
   }
@@ -63,7 +84,7 @@ public class MirrorClient {
    *                              none)
    * @param attachmentData        data for the attachment (or null if none)
    */
-  public static void insertTimelineItem(Credential credential, TimelineItem item,
+  public void insertTimelineItem(Credential credential, TimelineItem item,
       String attachmentContentType, byte[] attachmentData) throws IOException {
     Mirror.Timeline timeline = getMirror(credential).timeline();
     timeline.insert(item, new ByteArrayContent(attachmentContentType, attachmentData)).execute();
@@ -80,13 +101,13 @@ public class MirrorClient {
    * @param attachmentInputStream input stream for the attachment (or null if
    *                              none)
    */
-  public static void insertTimelineItem(Credential credential, TimelineItem item,
+  public void insertTimelineItem(Credential credential, TimelineItem item,
       String attachmentContentType, InputStream attachmentInputStream) throws IOException {
     insertTimelineItem(credential, item, attachmentContentType,
         ByteStreams.toByteArray(attachmentInputStream));
   }
 
-  public static InputStream getAttachmentInputStream(Credential credential, String timelineItemId,
+  public InputStream getAttachmentInputStream(Credential credential, String timelineItemId,
       String attachmentId) throws IOException {
     Mirror mirrorService = getMirror(credential);
     Mirror.Timeline.Attachments attachments = mirrorService.timeline().attachments();
@@ -97,14 +118,14 @@ public class MirrorClient {
     return resp.getContent();
   }
 
-  public static String getAttachmentContentType(Credential credential, String timelineItemId,
+  public String getAttachmentContentType(Credential credential, String timelineItemId,
       String attachmentId) throws IOException {
     Mirror.Timeline.Attachments attachments = getMirror(credential).timeline().attachments();
     Attachment attachmentMetadata = attachments.get(timelineItemId, attachmentId).execute();
     return attachmentMetadata.getContentType();
   }
 
-  public static void deleteTimelineItem(Credential credential, String timelineItemId) throws IOException {
+  public void deleteTimelineItem(Credential credential, String timelineItemId) throws IOException {
     getMirror(credential).timeline().delete(timelineItemId).execute();    
   }
 }
