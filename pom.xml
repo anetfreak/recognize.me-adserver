@@ -113,6 +113,31 @@
           <artifactId>spring-orm</artifactId>
           <version>${spring-framework.version}</version>
       </dependency>
+      
+      	<!-- Java Google API Client Library -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-oauth2</artifactId>
+			<version>v2-rev89-1.18.0-rc</version>
+		</dependency>
+	
+	    <dependency>
+	      <groupId>com.google.apis</groupId>
+	      <artifactId>google-api-services-mirror</artifactId>
+	      <version>v1-rev26-1.17.0-rc</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.google.http-client</groupId>
+	      <artifactId>google-http-client-jackson2</artifactId>
+	      <version>1.17.0-rc</version>
+	    </dependency>
+	    
+	    <!--  Google common ByteStream -->
+	    <dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>r05</version>
+		</dependency>
 
   </dependencies>
   
