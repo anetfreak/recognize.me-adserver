@@ -31,19 +31,20 @@ public class AdDaoImpl implements AdDao {
 	private DataSource dataSource;
 
 	public void saveAd(Ad ad) throws Exception{
-		String query = "insert into advertisement (id, name, url, ad_content_type, ad_brand_id, region, language, ad_content, created_date, expiry_date, ad_category_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "insert into advertisement (id, name, url, ad_content_type, ad_brand_id, region, language, "
+				+ "ad_content, created_date, expiry_date, ad_category_id, latitude, longitude) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-		 final File image = new File((String) ad.getContent());
-		 final InputStream imageIs = new FileInputStream(image);   
-		 LobHandler lobHandler = new DefaultLobHandler(); 
+		 //final File image = new File((String) ad.getContent());
+		 //final InputStream imageIs = new FileInputStream(image);   
+		 //LobHandler lobHandler = new DefaultLobHandler(); 
 		   
 		Object[] args = new Object[] { ad.getId(), ad.getName(), ad.getUrl(),
 				ad.getContentType().getId(), ad.getBrand().getId(),
 				ad.getRegion(), ad.getLanguage(), ad.getContent(),
 				ad.getCreatedDate(), ad.getExpiryDate(),
-				ad.getCategory().getId() };
+				ad.getCategory().getId(), ad.getLatitude(), ad.getLongitude() };
 
 		int out = jdbcTemplate.update(query, args);
 

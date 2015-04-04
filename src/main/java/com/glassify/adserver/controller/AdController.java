@@ -63,18 +63,20 @@ public class AdController {
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.POST)
 	@ResponseBody
-	public void createAd(
+	public ModelAndView createAd(
 			@RequestParam("brandid") Integer brandid,
 			@RequestParam("name") String name,
 			@RequestParam("url") String url,
 			@RequestParam("contenttypeid") Integer contentType,
 			@RequestParam("region") String region,
-			@RequestParam File content,
+			//@RequestParam(value="content", required=false) File content,
+			@RequestParam("locationLat") Float latitude,
+			@RequestParam("locationLong") Float longitude,
 			@RequestParam("categoryid") Integer category) {
 		
 		System.out.println("In POST - create ad");
 		Ad ad = new Ad();
-		
+		ModelAndView modelView = new ModelAndView("successAd");
 		AdBrand brand = new AdBrand();
 		brand.setId(brandid);
 		ad.setBrand(brand);
@@ -94,12 +96,13 @@ public class AdController {
 		ad.setLanguage(region);
 		ad.setName(name);
 		ad.setUrl(url);
-		//ad.setContent("Hello to your first advertisement");
+		ad.setLatitude(latitude);
+		ad.setLongitude(longitude);
+		ad.setContent("Hello to your first advertisement");
 
 		try {
 			adFacade.saveAd(ad);
 		} catch (FileNotFoundException file) {
-			// TODO Auto-generated catch block
 			System.out.println("The file uploaded could not be found..!");
 			file.printStackTrace();
 		}
@@ -110,6 +113,9 @@ public class AdController {
 		catch(Exception e){
 			System.out.println("Exception encountered.!");
 			e.printStackTrace();
+		}
+		finally{
+			return modelView;
 		}
 
 	}

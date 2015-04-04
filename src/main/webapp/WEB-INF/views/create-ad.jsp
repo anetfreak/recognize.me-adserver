@@ -1,19 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Recognize.Me Ad-Server!</title>
-
 <script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript"
-	src="resources/bootstrap/js/bootstrap.min.js"></script>
-<script
-	src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/index.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
 <script>
+$(document).ready(function() {
+	  $(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
+	});
+	
 	function initialize() {
 		var mapOptions = {
 			center : new google.maps.LatLng(37.7749, -122.4194200),
@@ -64,6 +70,8 @@
 							}));
 							marker.setPosition(place.geometry.location);
 							marker.setVisible(true);
+							document.getElementById('locationLat').value = place.geometry.location.lat();
+				            document.getElementById('locationLong').value = place.geometry.location.lng();
 
 							var address = '';
 							if (place.address_components) {
@@ -97,9 +105,11 @@
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="resources/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/home.css">
 </head>
 <body>
@@ -206,6 +216,8 @@
 							</select>
 						</div>
 					</div>
+					<input type="hidden" id="locationLat" name="locationLat" />
+					<input type="hidden" id="locationLong" name="locationLong" />  
 					<div class="form-group">
 						<label for="region" class="col-sm-2 control-label">Location</label>
 						<div class="col-sm-10">

@@ -18,7 +18,9 @@ public class Ad {
 	private Timestamp createdDate;
 	private Timestamp expiryDate;
 	private AdCategory category;
-	private String coordinates;
+	private float latitude;
+	private float longitude;
+	
 	
 	public int getId() {
 		return id;
@@ -86,10 +88,16 @@ public class Ad {
 	public void setCategory(AdCategory category) {
 		this.category = category;
 	}
-	public String getCoordinates() {
-		return coordinates;
+	public float getLatitude() {
+		return latitude;
 	}
-	public void setCoordinates(String coordinates) {
-		this.coordinates = coordinates;
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+	public float getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
 	}
 }
