@@ -33,7 +33,7 @@
 			                <div class="content">
 			                  <div class="pull-middle">
 			                    <h2 class="page-header">Recognize.me <span class="text-danger">AdServer</span></h2>
-			                    <p class="lead">Centralized place to manage a store of advertisements..</p>
+			                    <p class="lead">Centralized place to manage a store advertisements..</p>
 			                  </div>              
 			                </div>
 			            </div>
