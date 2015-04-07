@@ -97,6 +97,7 @@
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
+
 	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -195,7 +196,17 @@
 										<p class="help-block">Choose the file to be used as advertisement here..</p>
 									</div>
 							</div>
-							
+							<div class="form-group">
+								<label for="content" class="col-sm-2 control-label">Valid Until</label>
+								<div class="col-sm-5">
+									<div class="input-group date" id="datetimepicker1">
+                    					<input type='text' class="form-control" />
+                    					<span class="input-group-addon">
+                        					<span class="glyphicon glyphicon-calendar"></span>
+                    					</span>
+                					</div>
+								</div>
+							</div>
 							<input type="hidden" id="locationLat" name="locationLat" />
 							<input type="hidden" id="locationLong" name="locationLong" />  
 							<div class="form-group">

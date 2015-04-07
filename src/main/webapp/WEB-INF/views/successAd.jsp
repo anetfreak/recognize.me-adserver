@@ -37,7 +37,7 @@
 					          <div><p style="font-size:20px;">Advertisements</p></div>
 					          <div>
 								<p class="text-success">We have your advertisement in our database !</p>
-								<p>You can add more advertisements <a href="/adserver/createAd">here</a> or view your advertisements <a href="/adserver/showAds">here</a>.</p>
+								<p>You can add more advertisements <a href="/adserver/createAd">here</a> or view your advertisements <a href="/adserver/getAds">here</a>.</p>
 				        	  </div>
 						</div>
 					</div>

@@ -74,9 +74,7 @@ public class AdController {
 			@RequestParam("categoryid") Integer category,
 			@RequestParam(value="textcontent", required = false) String textcontent) throws Exception {
 
-		System.out.println("In POST - create ad");
 		Ad ad = new Ad();
-		ModelAndView modelView = new ModelAndView("successAd");
 		AdBrand brand = new AdBrand();
 		brand.setId(brandid);
 		ad.setBrand(brand);
@@ -127,16 +125,22 @@ public class AdController {
 		}
 		try {
 			adFacade.saveAd(ad);
+			return new ModelAndView("successAd");
 		} catch (SQLException sql) {
 			System.out.println("Error encountered in connecting to database");
 			sql.printStackTrace();
+			return new ModelAndView("errorAd");
 		} catch (Exception e) {
 			System.out.println("Exception encountered.!");
 			e.printStackTrace();
-		} finally {
-			return modelView;
-		}
-
+			return new ModelAndView("errorAd");
 	}
-
+	}
+	
+	@RequestMapping("/successAd")
+	public ModelAndView getsuccessMessage() {
+		ModelAndView modelAndView = new ModelAndView("successAd");
+		return modelAndView;
+	}
+	
 }
