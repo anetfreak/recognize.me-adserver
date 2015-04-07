@@ -18,6 +18,8 @@ public class AdFacadeImpl implements AdFacade {
 	private AdDao adDao;
 	
 	public void saveAd(Ad ad) throws Exception {
+		
+		
 		adDao.saveAd(ad);
 	}
 

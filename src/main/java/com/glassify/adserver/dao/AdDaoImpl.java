@@ -67,7 +67,7 @@ public class AdDaoImpl implements AdDao {
 						Ad ad = new Ad();
 						ad.setId(id);
 						ad.setName(rs.getString("name"));
-						ad.setContent(rs.getObject("content"));
+						ad.setContent(rs.getString("content"));
 						ad.setCreatedDate(rs.getTimestamp("created_date"));
 						ad.setExpiryDate(rs.getTimestamp("expiry_date"));
 						ad.setRegion(rs.getString("region"));
@@ -132,7 +132,7 @@ public class AdDaoImpl implements AdDao {
 			Ad ad = new Ad();
 			ad.setId(Integer.parseInt(String.valueOf(adRow.get("id"))));
 			ad.setName(String.valueOf(adRow.get("name")));
-			ad.setContent(adRow.get("content"));
+			ad.setContent(String.valueOf(adRow.get("content")));
 			ad.setCreatedDate(Timestamp.valueOf(String.valueOf(adRow
 					.get("created_date"))));
 			ad.setExpiryDate(Timestamp.valueOf(String.valueOf(adRow
@@ -176,7 +176,7 @@ public class AdDaoImpl implements AdDao {
 				adbrand.setName(String.valueOf(brandRow.get("name")));
 				adbrand.setWebsite(String.valueOf(brandRow.get("website")));
 				adbrand.setDomain(String.valueOf(brandRow.get("domain")));
-				adbrand.setDesc(String.valueOf(brandRow.get("desc")));
+				adbrand.setDesc(String.valueOf(brandRow.get("description")));
 
 				brandList.add(adbrand);
 			}
@@ -281,7 +281,7 @@ public class AdDaoImpl implements AdDao {
 							adBrand.setName(rs.getString("name"));
 							adBrand.setWebsite(rs.getString("website"));
 							adBrand.setDomain(rs.getString("domain"));
-							adBrand.setDesc(rs.getString("desc"));
+							adBrand.setDesc(rs.getString("description"));
 							return adBrand;
 						}
 					});

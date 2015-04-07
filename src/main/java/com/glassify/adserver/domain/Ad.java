@@ -1,6 +1,9 @@
 package com.glassify.adserver.domain;
 
 import java.sql.Timestamp;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.glassify.adserver.domain.AdBrand;
 import com.glassify.adserver.domain.AdCategory;
 import com.glassify.adserver.domain.AdContentType;
@@ -14,7 +17,7 @@ public class Ad {
 	private AdBrand brand;
 	private String region;
 	private String language;
-	private Object content;
+	private String content;
 	private Timestamp createdDate;
 	private Timestamp expiryDate;
 	private AdCategory category;
@@ -64,10 +67,10 @@ public class Ad {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public Object getContent() {
+	public String getContent() {
 		return content;
 	}
-	public void setContent(Object content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 	public Timestamp getCreatedDate() {
