@@ -204,7 +204,7 @@
 								<label for="region" class="col-sm-2 control-label">Location</label>
 								<div class="col-sm-10">
 									<div class="radio" id="panel" >
-										<input id="searchTextField" type="text" size="50" class="form-control" required >
+										<input id="searchTextField" type="text" size="50" class="form-control" required>
 									  	<label>
 									    	<input type="radio" name="type" id="changetype-all" value="all" checked>
 									    	All
