@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -9,7 +8,6 @@
 		<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/js/index.js"></script>
-		<script type="text/javascript" src="resources/js/ads.js"></script>
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -34,11 +32,24 @@
 						<div class="col-lg-8 col-lg-offset-1">
 							<h3>Recognize.me AdServer</h3>
 							<hr>
-					          <div><p style="font-size:20px;">Advertisements</p></div>
-					          <div>
-								<p class="text-success">We have your advertisement in our database !</p>
-								<p>You can add more advertisements <a href="/adserver/createAd">here</a> or view your advertisements <a href="/adserver/showAds">here</a>.</p>
-				        	  </div>
+					          <div><p style="font-size:20px;">Team</p></div>
+					          <div style="margin-top: 20px;">
+					            <div class="col-md-4 text-center">
+					              <img class="img-circle" src="resources/img/csoni.jpg" style="max-width: 40% !important; margin-bottom: 20px;" alt="Chitra Soni - Developer, Web Analyzer Team">
+					              <h3>Chitra Soni</h3>
+					              <p>Developer & Shopper </p>
+					            </div>
+					            <div class="col-md-4 text-center">
+					              <img class="img-circle" src="resources/img/aagrawal.jpg" style="max-width: 40% !important; margin-bottom: 20px;" alt="Amit Agrawal - Developer, Web Analyzer Team">
+					              <h3>Amit Agrawal</h3>
+					              <p>Developer & C++ Programmer </p>
+					            </div>
+					            <div class="col-md-4 text-center">
+					              <img class="img-circle" src="resources/img/ajoshi.jpg" style="max-width: 40% !important; margin-bottom: 20px;" alt="Ameya Joshi - Developer, Web Analyzer Team">
+					              <h3>Ameya Joshi</h3>
+					              <p>Coder & Tweeter </p>
+					            </div>
+					          </div>
 						</div>
 					</div>
 				</div>

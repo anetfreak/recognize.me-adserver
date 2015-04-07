@@ -16,4 +16,13 @@ public class HomeController {
 		return new ModelAndView("home");
 	}
 	
+	@RequestMapping("/about")
+	public ModelAndView showAboutPage() {
+		return new ModelAndView("about");
+	}
+	
+	@RequestMapping("/contact")
+	public ModelAndView showContactPage() {
+		return new ModelAndView("contact");
+	}
 }
