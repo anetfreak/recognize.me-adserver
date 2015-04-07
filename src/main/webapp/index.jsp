@@ -28,8 +28,11 @@
 				
 				<header class="header">
 			        <div class="container">
+			          <div class="row" style="margin-top: 150px;">
+			            <div class="col-md-6 col-md-offset-2">
 			                <div class="content">
 			                  <div class="pull-middle">
+			                    <h2 class="page-header">Recognize.me <span class="text-danger">AdServer</span></h2>
 			                    <p class="lead">Centralized place to manage a store of advertisements..</p>
 			                  </div>              
 			                </div>
