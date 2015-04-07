@@ -38,7 +38,6 @@ public class AdController {
 
 	@RequestMapping("/createAd")
 	public ModelAndView showCreateAdPage() {
-		System.out.println("In GET - create ad");
 		List<AdBrand> adbrands = adFacade.getAllBrands();
 		List<AdCategory> adcategories = adFacade.getAllAdCategories();
 		List<AdContentType> contenttype = adFacade.getallContentTypes();
