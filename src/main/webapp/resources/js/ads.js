@@ -5,4 +5,15 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	
+	$('#contenttypeid').on('change', function(){
+		var selectedOption = $(this).val();
+		if(selectedOption === '1') {
+			$('#fileContent').hide();
+			$('#textContent').show();
+		} else {
+			$('#textContent').hide();
+			$('#fileContent').show();
+		}
+	});
 });

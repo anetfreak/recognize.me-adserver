@@ -184,18 +184,16 @@
 							</div>
 							<div class="form-group">
 								<label for="content" class="col-sm-2 control-label">Content</label>
-									<div class="col-sm-10">
+									<div id="textContent" class="col-sm-10">
 										<textarea class="form-control" id="textcontent"
 											name="textcontent" rows="5"
 											placeholder="Advertisement content goes here"></textarea>
 									</div>
-							</div>
-							<div class="form-group">
-								<label for="content" class="col-sm-2 control-label">Content</label>
-								<div class="col-sm-5">
-									<input type="file" id="content" class="form-control" name="content">
-									<p class="help-block">Choose the file to be used as advertisement here..</p>
-								</div>
+									
+									<div id="fileContent" class="col-sm-5" style="display:none;">
+										<input type="file" id="content" class="form-control" name="content">
+										<p class="help-block">Choose the file to be used as advertisement here..</p>
+									</div>
 							</div>
 							
 							<input type="hidden" id="locationLat" name="locationLat" />
