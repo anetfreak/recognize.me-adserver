@@ -126,7 +126,7 @@
 				        <div><p style="font-size:20px;">Create Advertisement</p></div>
 						
 						<form class="form-horizontal" style="margin-top: 30px;"
-							id="createAdForm" method="POST">
+							id="createAdForm" method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="brandname" class="col-sm-2 control-label">Brand</label>
 								<div class="col-sm-5">
@@ -140,13 +140,13 @@
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">Name</label>
 								<div class="col-sm-10">
-									<input type="text" name="name" class="form-control" id="name" required="true" placeholder="Enter the advertisement name">
+									<input type="text" name="name" class="form-control" id="name" required placeholder="Enter the advertisement name">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="url" class="col-sm-2 control-label">URL</label>
 								<div class="col-sm-10">
-									<input type="url" name="url" class="form-control" id="url" required="true" placeholder="Enter a URL">
+									<input type="url" name="url" class="form-control" id="url" required placeholder="Enter a URL">
 								</div>
 							</div>
 							<div class="form-group">
@@ -204,7 +204,7 @@
 								<label for="region" class="col-sm-2 control-label">Location</label>
 								<div class="col-sm-10">
 									<div class="radio" id="panel" >
-										<input id="searchTextField" type="text" size="50" class="form-control" required="true" >
+										<input id="searchTextField" type="text" size="50" class="form-control" required >
 									  	<label>
 									    	<input type="radio" name="type" id="changetype-all" value="all" checked>
 									    	All
