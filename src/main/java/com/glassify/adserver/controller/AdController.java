@@ -94,13 +94,8 @@ public class AdController {
 		ad.setUrl(url);
 		ad.setLatitude(latitude);
 		ad.setLongitude(longitude);
-
-		if(textcontent != null || !textcontent.isEmpty()){
-			System.out.println("textcontent not null "+textcontent);
-				ad.setContent(textcontent);
-		}
 		
-		else if (content != null && !(content.isEmpty())) {
+		if (content != null && !(content.isEmpty())) {
 			// for (CommonsMultipartFile aFile : content){
 			try {
 				System.out.println("Saving file: "
@@ -120,7 +115,12 @@ public class AdController {
 						+ content.getOriginalFilename());
 			}
 			// }
-		} else {
+		}
+		else if(!(textcontent.isEmpty())){
+			System.out.println("textcontent not null "+textcontent);
+				ad.setContent(textcontent);
+		}
+		else {
 			System.out.println("Could not upload the file as it was empty.");
 		}
 		try {

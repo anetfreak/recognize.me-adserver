@@ -49,9 +49,9 @@ public class AdDaoImpl implements AdDao {
 		int out = jdbcTemplate.update(query, args);
 
 		if (out != 0) {
-			System.out.println("Ad saved with id=" + ad.getId());
+			System.out.println("Ad saved to the database");
 		} else {
-			System.out.println("Ad save failed with id=" + ad.getId());
+			System.out.println("Error in saving the glass to database");
 		}
 	}
 
