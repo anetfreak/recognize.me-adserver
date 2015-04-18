@@ -115,7 +115,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring-framework.version}</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- Java Google API Client Library -->
