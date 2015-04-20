@@ -8,9 +8,15 @@
 	<title>Recognize.Me AdServer!</title>
 	<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/datepicker/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="resources/js/index.js"></script>
 	<script type="text/javascript" src="resources/js/ads.js"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="resources/datepicker/css/datepicker.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="resources/css/index.css">
 	<script>
 	function initialize() {
 		var mapOptions = {
@@ -97,11 +103,6 @@
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
-
-	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="resources/css/index.css">
 </head>
 <body>
 	
@@ -199,8 +200,8 @@
 							<div class="form-group">
 								<label for="content" class="col-sm-2 control-label">Valid Until</label>
 								<div class="col-sm-5">
-									<div class="input-group date" id="datetimepicker1">
-                    					<input type='text' class="form-control" />
+									<div class="input-group date">
+                    					<input type='text' class="form-control" data-date-format="yyyy-mm-dd" id="datetimepicker1"/>
                     					<span class="input-group-addon">
                         					<span class="glyphicon glyphicon-calendar"></span>
                     					</span>

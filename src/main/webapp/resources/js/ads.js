@@ -16,4 +16,6 @@ $(document).ready(function() {
 			$('#fileContent').show();
 		}
 	});
+	
+    $('#datetimepicker1').datepicker();
 });
