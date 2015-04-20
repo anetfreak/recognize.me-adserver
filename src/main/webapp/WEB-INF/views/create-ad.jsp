@@ -201,7 +201,7 @@
 								<label for="content" class="col-sm-2 control-label">Valid Until</label>
 								<div class="col-sm-5">
 									<div class="input-group date">
-                    					<input type='text' class="form-control" data-date-format="yyyy-mm-dd" id="datetimepicker1"/>
+                    					<input type='text' class="form-control" data-date-format="yyyy-mm-dd" id="datetimepicker1" name="datetimepicker1"/>
                     					<span class="input-group-addon">
                         					<span class="glyphicon glyphicon-calendar"></span>
                     					</span>

@@ -3,9 +3,11 @@ package com.glassify.adserver.controller;
 import java.io.File;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,10 @@ public class AdController {
 	private AdFacade adFacade;
 	private String saveDirectory = "/tmp/";
 
+	/**
+	 * Method to retrieve all advertisements
+	 * @return
+	 */
 	@RequestMapping("/getAds")
 	public ModelAndView getAllAds() {
 		List<Ad> ads = adFacade.getAllAds();
@@ -53,13 +59,39 @@ public class AdController {
 		return adFacade.getAdById(adId);
 	}
 
+	/**
+	 * Method called by image recognition to retrieve advertisements related to a brand, category and location
+	 * @param brandName
+	 * @param latitude
+	 * @param longitude
+	 * @param category
+	 * @return
+	 */
 	@RequestMapping(value = "/retrieveAd", method = RequestMethod.POST)
 	public @ResponseBody Ad retrieveAd(@RequestParam String brandName,
 			@RequestParam long latitude, @RequestParam long longitude,
 			@RequestParam String category) {
-		return adFacade.retrieveAd(brandName, latitude, longitude, category);
+		Ad ad = adFacade.retrieveAd(brandName, latitude, longitude, category);
+		//System.out.println(ad.getBrand()+ " " + ad.getLatitude() + " "+ad.getLongitude() + " "+ ad.getName() + " "+ ad.getExpiryDate());
+		return ad;
 	}
 
+	/**
+	 * Method to save an advertisement details
+	 * @param brandid
+	 * @param name
+	 * @param url
+	 * @param contentType
+	 * @param region
+	 * @param content
+	 * @param latitude
+	 * @param longitude
+	 * @param category
+	 * @param expiryDate
+	 * @param textcontent
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/createAd", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createAd(
@@ -72,6 +104,7 @@ public class AdController {
 			@RequestParam("locationLat") Float latitude,
 			@RequestParam("locationLong") Float longitude,
 			@RequestParam("categoryid") Integer category,
+			@RequestParam("datetimepicker1") @DateTimeFormat(pattern = "yyyy-mm-dd") Date expiryDate,
 			@RequestParam(value="textcontent", required = false) String textcontent) throws Exception {
 
 		Ad ad = new Ad();
@@ -87,7 +120,7 @@ public class AdController {
 		adContentType.setId(contentType);
 		ad.setContentType(adContentType);
 		ad.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-		ad.setExpiryDate(new Timestamp(System.currentTimeMillis()));
+		ad.setExpiryDate(new Timestamp(expiryDate.getTime()));
 		ad.setRegion(region);
 		ad.setLanguage(region);
 		ad.setName(name);
@@ -137,6 +170,10 @@ public class AdController {
 	}
 	}
 	
+	/**
+	 * Successful addition of an advertisement into database
+	 * @return
+	 */
 	@RequestMapping("/successAd")
 	public ModelAndView getsuccessMessage() {
 		ModelAndView modelAndView = new ModelAndView("successAd");

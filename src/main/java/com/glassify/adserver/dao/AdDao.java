@@ -19,7 +19,7 @@ public interface AdDao {
     public void deleteAdById(int id);
     //Get All
     public List<Ad> getAllAds();
-	public Ad retrieveAd(String brandName, long latitude, long longitude, String category);
+	public List<Ad> retrieveAd(String brandName, long latitude, long longitude, String category);
 	public List<AdBrand> getAllBrands();
 	public List<AdCategory> getAllAdCategories();
 	public List<AdContentType> getallContentTypes();

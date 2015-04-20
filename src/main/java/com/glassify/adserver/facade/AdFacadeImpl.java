@@ -18,8 +18,6 @@ public class AdFacadeImpl implements AdFacade {
 	private AdDao adDao;
 	
 	public void saveAd(Ad ad) throws Exception {
-		
-		
 		adDao.saveAd(ad);
 	}
 
@@ -40,7 +38,11 @@ public class AdFacadeImpl implements AdFacade {
 	}
 
 	public Ad retrieveAd(String brandName, long latitude, long longitude, String category) {
-		return adDao.retrieveAd(brandName, latitude, longitude, category);
+		
+		//The advertisement list is sorted by expiry date and the top ad is returned from the list.
+		List<Ad> advertisements = adDao.retrieveAd(brandName, latitude, longitude, category);
+		Ad advert = advertisements.get(0);
+		return advert; 
 	}
 	
 	public List<AdBrand> getAllBrands(){

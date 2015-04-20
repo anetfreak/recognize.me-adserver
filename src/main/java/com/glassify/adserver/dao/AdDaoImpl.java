@@ -1,8 +1,5 @@
 package com.glassify.adserver.dao;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -15,8 +12,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.lob.DefaultLobHandler;
-import org.springframework.jdbc.support.lob.LobHandler;
 import org.springframework.stereotype.Component;
 
 import com.glassify.adserver.domain.Ad;
@@ -151,10 +146,41 @@ public class AdDaoImpl implements AdDao {
 		return adList;
 	}
 
-	public Ad retrieveAd(String brandName, long latitude, long longitude,
+	/**
+	 * Method to retrieve advertisement details for a brand, location, category
+	 */
+	public List<Ad> retrieveAd(String brandName, long latitude, long longitude,
 			String category) {
-		// TODO Auto-generated method stub
-		return null;
+		AdBrand brandDetails = getBrandDetails(brandName);
+		AdCategory categoryDetails = getCategoryDetails(category);
+		int brandId = brandDetails.getId();
+		int categoryId = categoryDetails.getId();
+		String query = "select * from advertisement where ad_brand_id = ? and latitude = ? and longitude = ? and category = ? order by expiry_date";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		List<Ad> adList = new ArrayList<Ad>();
+		List<Map<String, Object>> adRows = jdbcTemplate.queryForList(query, brandId, latitude, longitude, categoryId);
+
+		for (Map<String, Object> adRow : adRows) {
+			Ad ad = new Ad();
+			ad.setId(Integer.parseInt(String.valueOf(adRow.get("id"))));
+			ad.setName(String.valueOf(adRow.get("name")));
+			ad.setContent(String.valueOf(adRow.get("content")));
+			ad.setCreatedDate(Timestamp.valueOf(String.valueOf(adRow
+					.get("created_date"))));
+			ad.setExpiryDate(Timestamp.valueOf(String.valueOf(adRow
+					.get("expiry_date"))));
+			ad.setRegion(String.valueOf(adRow.get("region")));
+			ad.setLanguage(String.valueOf(adRow.get("language")));
+			ad.setUrl(String.valueOf(adRow.get("url")));
+			AdCategory adCategory = getCategoryDetails(Integer.parseInt(String.valueOf(adRow.get("ad_category_id"))));
+			AdBrand brand = getBrandDetails(Integer.parseInt(String.valueOf(adRow.get("ad_brand_id"))));
+			AdContentType contentType = getContentDetails(Integer.parseInt(String.valueOf(adRow.get("ad_content_type"))));
+			ad.setBrand(brand);
+			ad.setCategory(adCategory);
+			ad.setContentType(contentType);
+			adList.add(ad);
+		}
+		return adList;
 	}
 
 	/**
@@ -266,6 +292,27 @@ public class AdDaoImpl implements AdDao {
 	}
 	
 	/**
+	 * Method to retrieve the category details according to category name
+	 */
+	public AdCategory getCategoryDetails(final String categoryName){
+		
+			String query = "select * from ad_category where name = ?";
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+			AdCategory adCat = jdbcTemplate.queryForObject(query, new Object[] { categoryName },
+					new RowMapper<AdCategory>() {
+						AdCategory adCat = new AdCategory();
+						public AdCategory mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							adCat.setId(rs.getInt("id"));
+							adCat.setName(categoryName);
+							adCat.setDesc(rs.getString("desc"));
+							return adCat;
+						}
+					});
+			return adCat;
+	}
+	
+	/**
 	 * Method to retrieve the Brand details according to brand id
 	 */
 	public AdBrand getBrandDetails(final Integer brandId){
@@ -279,6 +326,29 @@ public class AdDaoImpl implements AdDao {
 								throws SQLException {
 							adBrand.setId(brandId);
 							adBrand.setName(rs.getString("name"));
+							adBrand.setWebsite(rs.getString("website"));
+							adBrand.setDomain(rs.getString("domain"));
+							adBrand.setDesc(rs.getString("description"));
+							return adBrand;
+						}
+					});
+			return adBrand;
+	}
+	
+	/**
+	 * Method to retrieve the Brand details according to brand name
+	 */
+	public AdBrand getBrandDetails(final String brandName){
+		
+			String query = "select * from ad_brand where name = ?";
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+			AdBrand adBrand = jdbcTemplate.queryForObject(query, new Object[] { brandName },
+					new RowMapper<AdBrand>() {
+						AdBrand adBrand = new AdBrand();
+						public AdBrand mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							adBrand.setId(rs.getInt("id"));
+							adBrand.setName(brandName);
 							adBrand.setWebsite(rs.getString("website"));
 							adBrand.setDomain(rs.getString("domain"));
 							adBrand.setDesc(rs.getString("description"));
@@ -308,4 +378,6 @@ public class AdDaoImpl implements AdDao {
 					});
 			return adContent;
 	}
+	
+	
 }
