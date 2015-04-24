@@ -14,7 +14,7 @@ public interface AdFacade {
     public void updateAd(Ad ad);
     public void deleteAdById(int id);
     public List<Ad> getAllAds();
-	public Ad retrieveAd(String brandName, long latitude, long longitude, String category);
+	public Ad retrieveAd(String brandName, double latitude, double longitude, String category) throws Exception;
 	public List<AdBrand> getAllBrands();
 	public List<AdCategory> getAllAdCategories();
 	public List<AdContentType> getallContentTypes();

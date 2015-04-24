@@ -149,16 +149,16 @@ public class AdDaoImpl implements AdDao {
 	/**
 	 * Method to retrieve advertisement details for a brand, location, category
 	 */
-	public List<Ad> retrieveAd(String brandName, long latitude, long longitude,
+	public List<Ad> retrieveAd(String brandName, double latitude, double longitude,
 			String category) {
 		AdBrand brandDetails = getBrandDetails(brandName);
 		AdCategory categoryDetails = getCategoryDetails(category);
 		int brandId = brandDetails.getId();
 		int categoryId = categoryDetails.getId();
-		String query = "select * from advertisement where ad_brand_id = ? and latitude = ? and longitude = ? and category = ? order by expiry_date";
+		String query = "select * from advertisement where ad_brand_id = ? and ad_category_id = ? order by expiry_date";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Ad> adList = new ArrayList<Ad>();
-		List<Map<String, Object>> adRows = jdbcTemplate.queryForList(query, brandId, latitude, longitude, categoryId);
+		List<Map<String, Object>> adRows = jdbcTemplate.queryForList(query, brandId, categoryId);
 
 		for (Map<String, Object> adRow : adRows) {
 			Ad ad = new Ad();
@@ -172,6 +172,8 @@ public class AdDaoImpl implements AdDao {
 			ad.setRegion(String.valueOf(adRow.get("region")));
 			ad.setLanguage(String.valueOf(adRow.get("language")));
 			ad.setUrl(String.valueOf(adRow.get("url")));
+			ad.setLatitude(Double.parseDouble(String.valueOf(adRow.get("latitude"))));
+			ad.setLongitude(Double.parseDouble(String.valueOf(adRow.get("longitude"))));
 			AdCategory adCategory = getCategoryDetails(Integer.parseInt(String.valueOf(adRow.get("ad_category_id"))));
 			AdBrand brand = getBrandDetails(Integer.parseInt(String.valueOf(adRow.get("ad_brand_id"))));
 			AdContentType contentType = getContentDetails(Integer.parseInt(String.valueOf(adRow.get("ad_content_type"))));

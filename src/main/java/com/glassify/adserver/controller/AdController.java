@@ -69,9 +69,14 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/retrieveAd", method = RequestMethod.POST)
 	public @ResponseBody Ad retrieveAd(@RequestParam String brandName,
-			@RequestParam long latitude, @RequestParam long longitude,
+			@RequestParam double latitude, @RequestParam double longitude,
 			@RequestParam String category) {
-		Ad ad = adFacade.retrieveAd(brandName, latitude, longitude, category);
+		Ad ad = null;
+		try {
+			ad = adFacade.retrieveAd(brandName, latitude, longitude, category);
+		} catch (Exception e) {
+			System.out.println("Sorry.! No advertisements are there matching to the Brand Name and location.");
+		}
 		//System.out.println(ad.getBrand()+ " " + ad.getLatitude() + " "+ad.getLongitude() + " "+ ad.getName() + " "+ ad.getExpiryDate());
 		return ad;
 	}
