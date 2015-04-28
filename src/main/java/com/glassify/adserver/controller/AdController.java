@@ -28,7 +28,7 @@ public class AdController {
 
 	@Autowired
 	private AdFacade adFacade;
-	private String saveDirectory = "/tmp/";
+	private String saveDirectory = "/var/www/html";
 
 	/**
 	 * Method to retrieve all advertisements
@@ -73,7 +73,7 @@ public class AdController {
 			@RequestParam String category) {
 		Ad ad = null;
 		try {
-			ad = adFacade.retrieveAd(brandName, latitude, longitude, category);
+			ad = adFacade.retrieveAd(brandName.toUpperCase(), latitude, longitude, category);
 		} catch (Exception e) {
 			System.out.println("Sorry.! No advertisements are there matching to the Brand Name and location.");
 		}

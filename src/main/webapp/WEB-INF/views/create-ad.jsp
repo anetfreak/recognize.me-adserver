@@ -127,7 +127,7 @@
 						<hr>
 				        <div><p style="font-size:20px;">Create Advertisement</p></div>
 						
-						<form class="form-horizontal" style="margin-top: 30px;"
+						<form class="form-horizontal" style="margin: 30px 0px 50px 0px; overflow-x:auto;"
 							id="createAdForm" method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="brandname" class="col-sm-2 control-label">Brand</label>
