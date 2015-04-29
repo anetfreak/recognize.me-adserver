@@ -2,12 +2,6 @@ package com.glassify.adserver.domain;
 
 import java.sql.Timestamp;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import com.glassify.adserver.domain.AdBrand;
-import com.glassify.adserver.domain.AdCategory;
-import com.glassify.adserver.domain.AdContentType;
-
 public class Ad {
 
 	private int id;	
