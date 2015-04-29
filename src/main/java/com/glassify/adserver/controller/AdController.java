@@ -28,7 +28,7 @@ public class AdController {
 
 	@Autowired
 	private AdFacade adFacade;
-	private String saveDirectory = "/var/www/html";
+	private String saveDirectory = "/var/www/html/";
 
 	/**
 	 * Method to retrieve all advertisements
@@ -112,6 +112,7 @@ public class AdController {
 			@RequestParam("datetimepicker1") @DateTimeFormat(pattern = "yyyy-mm-dd") Date expiryDate,
 			@RequestParam(value="textcontent", required = false) String textcontent) throws Exception {
 
+		System.out.println(saveDirectory);
 		Ad ad = new Ad();
 		AdBrand brand = new AdBrand();
 		brand.setId(brandid);
@@ -136,21 +137,19 @@ public class AdController {
 		if (content != null && !(content.isEmpty())) {
 			// for (CommonsMultipartFile aFile : content){
 			try {
-				System.out.println("Saving file: "
-						+ content.getOriginalFilename());
+				System.out.println("Saving file: " + content.getOriginalFilename());
 
 				if (!content.getOriginalFilename().equals("")) {
-					content.transferTo(new File(saveDirectory
-							+ content.getOriginalFilename()));
-					System.out
-							.println("You have successfully uploaded the file "
-									+ content.getOriginalFilename());
+					System.out.println(saveDirectory);
+					content.transferTo(new File(saveDirectory + content.getOriginalFilename()));
+					System.out.println("You have successfully uploaded the file " + content.getOriginalFilename());
 					System.out.println(saveDirectory + content.getOriginalFilename());
 					ad.setContent(saveDirectory + content.getOriginalFilename());
 				}
 			} catch (Exception e) {
-				System.out.println("Failed to upload the file "
-						+ content.getOriginalFilename());
+				e.printStackTrace();
+				System.out.println("Failed to upload the file " + content.getOriginalFilename());
+				return new ModelAndView("errorAd");
 			}
 			// }
 		}
@@ -182,6 +181,16 @@ public class AdController {
 	@RequestMapping("/successAd")
 	public ModelAndView getsuccessMessage() {
 		ModelAndView modelAndView = new ModelAndView("successAd");
+		return modelAndView;
+	}
+	
+	/**
+	 * Advertisement addition error
+	 * @return
+	 */
+	@RequestMapping("/errorAd")
+	public ModelAndView getErrorMessage() {
+		ModelAndView modelAndView = new ModelAndView("errorAd");
 		return modelAndView;
 	}
 	
