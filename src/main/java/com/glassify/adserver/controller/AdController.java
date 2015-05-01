@@ -76,9 +76,19 @@ public class AdController {
 			ad = adFacade.retrieveAd(brandName.toUpperCase(), latitude, longitude, category);
 		} catch (Exception e) {
 			System.out.println("Sorry! No advertisements are there matching to the Brand Name and location.");
+			return "";
 		}
 		//System.out.println(ad.getBrand()+ " " + ad.getLatitude() + " "+ad.getLongitude() + " "+ ad.getName() + " "+ ad.getExpiryDate());
-		return ad.getContent();
+		if(ad == null) {
+			return "";
+		} else {
+			if(ad.getContent() != null) {
+				return ad.getContent();
+			} else {
+				return "";
+			}
+		}
+		
 	}
 
 	/**

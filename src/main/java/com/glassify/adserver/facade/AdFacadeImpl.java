@@ -43,21 +43,20 @@ public class AdFacadeImpl implements AdFacade {
 		//First filtering out the advertisements located within 15 miles
 		List<Ad> advertisements = adDao.retrieveAd(brandName, latitude, longitude, category);
 		List<Ad> filteredAds = new ArrayList<Ad>();
-		for (Ad adRow: advertisements){
-			//System.out.println(adRow.getId());
-			//System.out.println(adRow.getName());
-			double distance = distance(adRow.getLatitude(), adRow.getLongitude(), latitude, longitude);
-			if (distance <= 15){
-				filteredAds.add(adRow);
-			}
-		}
+//		for (Ad adRow: advertisements){
+//			//System.out.println(adRow.getId());
+//			//System.out.println(adRow.getName());
+//			double distance = distance(adRow.getLatitude(), adRow.getLongitude(), latitude, longitude);
+//			if (distance <= 15){
+//				filteredAds.add(adRow);
+//			}
+//		}
 		//The advertisement list is sorted by expiry date and the top ad is returned from the list.
-		System.out.println(filteredAds.size());
-		if(filteredAds.isEmpty()){
+		System.out.println(advertisements.size());
+		if(advertisements.isEmpty()){
 			throw new Exception("Sorry.! No advertisements are there matching to the Brand Name and location");
-		}
-		else{
-			Ad advert = filteredAds.get(0);
+		} else{
+			Ad advert = advertisements.get(0);
 			return advert;
 		}
 	}
