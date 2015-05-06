@@ -8,11 +8,18 @@
 		<title>Recognize.Me AdServer!</title>
 		
 		<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="resources/datepicker/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 		<script type="text/javascript" src="resources/js/index.js"></script>
 		<script type="text/javascript" src="resources/js/ads.js"></script>
-		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+		
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="resources/datepicker/css/datepicker.css">
+		<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
 		<link rel="stylesheet" href="resources/css/index.css">
 	</head>
 	<body>
@@ -38,7 +45,7 @@
 					        <div><p style="font-size:20px;">Advertisements</p></div>
 			        	
 				        	<div>
-				        		<table id="ads-table" class="table table-striped">
+				        		<table id="ads-table" class="table table-striped table-bordered table-condensed">
 				        			<thead>
 				        				<tr>
 				        					<th>Name</th>

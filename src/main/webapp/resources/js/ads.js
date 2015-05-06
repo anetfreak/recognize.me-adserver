@@ -18,4 +18,6 @@ $(document).ready(function() {
 	});
 	
     $('#datetimepicker1').datepicker();
+    
+    $('#ads-table').DataTable();
 });
