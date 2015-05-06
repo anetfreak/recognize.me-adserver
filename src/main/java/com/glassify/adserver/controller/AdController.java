@@ -72,10 +72,15 @@ public class AdController {
 			@RequestParam double latitude, @RequestParam double longitude,
 			@RequestParam String category) {
 		Ad ad = null;
+		System.out.println("brandName: " + brandName);
+		System.out.println("latitude: " + latitude);
+		System.out.println("longitude: " + longitude);
+		System.out.println("category: " + category);
 		try {
 			ad = adFacade.retrieveAd(brandName.toUpperCase(), latitude, longitude, category);
 		} catch (Exception e) {
-			System.out.println("Sorry! No advertisements are there matching to the Brand Name and location.");
+			System.out.println("Sorry! No advertisements are there matching to the Brand Name and location. ");
+			e.printStackTrace();
 			return "";
 		}
 		//System.out.println(ad.getBrand()+ " " + ad.getLatitude() + " "+ad.getLongitude() + " "+ ad.getName() + " "+ ad.getExpiryDate());

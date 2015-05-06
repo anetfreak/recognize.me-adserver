@@ -151,6 +151,7 @@ public class AdDaoImpl implements AdDao {
 	 */
 	public List<Ad> retrieveAd(String brandName, double latitude, double longitude,
 			String category) {
+		System.out.println("in retrieveAd");
 		AdBrand brandDetails = getBrandDetails(brandName);
 		AdCategory categoryDetails = getCategoryDetails(category);
 		int brandId = brandDetails.getId();
@@ -164,7 +165,7 @@ public class AdDaoImpl implements AdDao {
 			Ad ad = new Ad();
 			ad.setId(Integer.parseInt(String.valueOf(adRow.get("id"))));
 			ad.setName(String.valueOf(adRow.get("name")));
-			ad.setContent(String.valueOf(adRow.get("content")));
+			ad.setContent(String.valueOf(adRow.get("ad_content")));
 			ad.setCreatedDate(Timestamp.valueOf(String.valueOf(adRow
 					.get("created_date"))));
 			ad.setExpiryDate(Timestamp.valueOf(String.valueOf(adRow
@@ -182,6 +183,7 @@ public class AdDaoImpl implements AdDao {
 			ad.setContentType(contentType);
 			adList.add(ad);
 		}
+		System.out.println("returning advertisement size " + adList.size());
 		return adList;
 	}
 
